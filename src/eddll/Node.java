@@ -1,30 +1,30 @@
 package eddll;
 
 public class Node {
-    private int id;
+    private String id;
     private Object value;
     private Node next;
     private Node prev;
 
     public Node() {
-        this.id = 0;
+        this.id = null;
         this.value = null;
         this.next = null;
         this.prev = null;
     }
 
-    public Node(int id, Object value) {
+    public Node(String id, Object value) {
         this.id = id;
         this.value = value;
         this.next = null;
         this.prev = null;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

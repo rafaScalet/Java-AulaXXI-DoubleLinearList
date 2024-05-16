@@ -23,35 +23,48 @@ public class DoubleLinearList {
         return (this.top == null && this.bottom == null);
     }
 
-    private void add(Node node) {
-        if (empty()) {
+    public void add(Node node) {
+        if (this.empty()) {
             this.top = this.bottom = node;
         } else {
             Node serv = this.top;
+            node.setNext(serv);
             this.top = node;
-            serv.setNext(node);
-            serv.setPrev(this.bottom);
+            serv.setPrev(node);
         }
         this.addSize();
     }
 
-    private void append(Node node) {
-        if (empty()) {
+    public void append(Node node) {
+        if (this.empty()) {
             this.top = this.bottom = node;
         } else {
             Node serv = this.bottom;
+            node.setPrev(serv);
             this.bottom = node;
-            serv.setNext(node);
-            serv.setPrev(this.top);
+            serv.setNext(this.bottom);
         }
         this.addSize();
     }
 
-    private void show(){
-        Node serv = this.top;
-        while(serv != this.bottom){
+    public Node search(String id) {
+        Node retNode = this.top;
+        if (this.empty()) {
+            return null;
+        } else {
+            while (retNode != null && !retNode.getId().equals(id)) {
+                retNode = retNode.getNext();
+            }
+        }
+
+        return retNode;
+    }
+
+    public void show() {
+        Node serv = this.bottom;
+        while (serv != this.top) {
             System.out.println("-->" + serv.getValue());
-            serv = serv.getNext();
+            serv = serv.getPrev();
         }
         System.out.println("-->" + serv.getValue());
     }
